@@ -1,4 +1,4 @@
-Exploratory Data Analysis for IMDB Review Sentiment Project
+# Exploratory Data Analysis for IMDB Review Sentiment Project
  Overview
 
 This EDA explores the IMDB movie review dataset, which contains:
