@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
 from models.reviewSentiment import ReviewIn , SentimentOut
 
 
 app = FastAPI(title="Simple analysis API")
 templates = Jinja2Templates(directory='app/templates')
-
+# not sure yet model = get_model() 
 @app.get('/health')
 def health_check():
     return {"status":"ok"}
@@ -14,7 +13,12 @@ def health_check():
 @app.post('/predict')
 def predict_sentiment(request:ReviewIn)->SentimentOut:
     try:
-        pass # Placeholder for sentiment analysis logic
+        
+        review = request['review'] #from textarea name in index.html
+        pred = model.predict(review)
+        label_map = {0:'neg',1:'pos'}
+
+        return SentimentOut(sentiment,score) # or just make it return {"text":review}
     except Exception as e:
         return {"error":str(e)}
 

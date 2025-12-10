@@ -1,7 +1,7 @@
 from sklearn.metrics import accuracy_score as accuracy , precision_score as precision , recall_score as recall , f1_score as f1 
-from time import time
 import numpy as np
-def return_metrics(y_true,y_pred):
+import time
+def metrics_info(y_true,y_pred):
     metrics = {
         "accuracy":accuracy(y_true,y_pred),
         "precision":precision(y_true,y_pred),
@@ -18,6 +18,12 @@ def calculate_training_time(start_time, end_time):
         "seconds":training_time_seconds,
         "minutes": training_time_minutes
     }
-
-def calculate_inference_time():
-    pass 
+#how long it takes to make a prediction
+def calculate_inference_time(model,test_data):
+    times = []
+    for testData in test_data:
+        start = time.time()
+        model.predict([testData])
+        times.append(time.time()-start)
+    
+    return np.mean(times)
