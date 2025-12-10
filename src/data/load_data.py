@@ -1,6 +1,9 @@
 import pandas as pd 
 import numpy as np
 
+def read_csv_fallback(file_path:str):
+    try:
+        
 
 def load_data(file_path:str)->pd.DataFrame:
     try:
