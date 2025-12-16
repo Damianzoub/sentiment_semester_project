@@ -5,7 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
-
+imdb_master.csv
+mlp_classifier.pkl
+svc.pkl
+mlp.pkl
 # Distribution / packaging
 .Python
 build/

@@ -41,10 +41,10 @@
     <h1>Movie Review Sentiment</h1>
     <p>Type your review and see if it is classified as <strong>positive</strong> or <strong>negative</strong>.</p>
 
-    <form method="post" action="/analyze">
+    <form method="post" action="/predict">
         <label for="review">Your review:</label><br>
         <textarea id="review" name="review" placeholder="Write your movie review here...">{{ review }}</textarea><br>
-        <button type="submit">Analyze</button>
+        <button type="submit">Analyse</button>
     </form>
 
     {% if sentiment %}

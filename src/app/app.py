@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
-from models.reviewSentiment import ReviewIn , SentimentOut
+from src.models.reviewSentiment import ReviewIn , SentimentOut
+from src.models.config import load_model
 
+model = load_model()
 
 app = FastAPI(title="Simple analysis API")
 templates = Jinja2Templates(directory='app/templates')
@@ -15,10 +17,10 @@ def predict_sentiment(request:ReviewIn)->SentimentOut:
     try:
         
         review = request['review'] #from textarea name in index.html
-        pred = model.predict(review)
+        pred = model.predict(review)[0]
         label_map = {0:'neg',1:'pos'}
-
-        return SentimentOut(sentiment,score) # or just make it return {"text":review}
+        sentiment = label_map[pred]
+        return SentimentOut(review,sentiment) # or just make it return {"text":review}
     except Exception as e:
         return {"error":str(e)}
 

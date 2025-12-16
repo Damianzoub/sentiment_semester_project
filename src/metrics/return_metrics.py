@@ -1,6 +1,7 @@
 from sklearn.metrics import accuracy_score as accuracy , precision_score as precision , recall_score as recall , f1_score as f1 
 import numpy as np
 import time
+
 def metrics_info(y_true,y_pred):
     metrics = {
         "accuracy":accuracy(y_true,y_pred),
