@@ -1,7 +1,7 @@
 from sklearn.metrics import accuracy_score as accuracy , precision_score as precision , recall_score as recall , f1_score as f1 
 import numpy as np
 import time
-
+import json
 def metrics_info(y_true,y_pred):
     metrics = {
         "accuracy":accuracy(y_true,y_pred),
@@ -28,3 +28,14 @@ def calculate_inference_time(model,test_data):
         times.append(time.time()-start)
     
     return np.mean(times)
+
+def save_results_json(path,results):
+    def convert(o):
+        try: 
+            return float(o)
+        except Exception:
+            return str(o)
+        
+    clean = json.loads(json.dumps(results,default=convert))
+    with open(path,"w") as f:
+        json.dump(clean,f,indent=2)

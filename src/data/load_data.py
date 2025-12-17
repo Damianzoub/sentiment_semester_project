@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 from sklearn.model_selection import train_test_split
 from pathlib import Path
-from src.data.preprocess import clean_dataset
+from data.preprocess import clean_dataset
 
 def read_csv_fallback(file_path:str):
     try:
@@ -30,7 +30,7 @@ def make_and_save_split(df:pd.DataFrame,dataset_name:str,review_col:str='review'
         min_words=min_words
     )
     df = df[[review_col,label_col]].copy()
-    df = df[label_col].isin(valid_labels)
+    df = df[df[label_col].isin(valid_labels)].copy()
     train_df ,test_df = train_test_split(df,test_size=test_size,random_state=seed,stratify=df[label_col])
 
     base = Path("data/processed")/dataset_name

@@ -2,7 +2,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import SVC 
 from sklearn.neural_network import MLPClassifier
-from src.models.preprocess_text import TextCleaner
+from models.preprocess_text import TextCleaner
 
 def build_tfidf_svc():
     return Pipeline([(
@@ -14,10 +14,10 @@ def build_tfidf_svc():
             stop_words="english"
         )
     ),(
-        "clf",SVC()
+        "svc",SVC()
     )])
 
-def build_tfidf_nn():
+def build_tfidf_mlp():
     return Pipeline([(
         "cleaner",TextCleaner()
     ),(
@@ -26,7 +26,7 @@ def build_tfidf_nn():
             max_features=40000,
             stop_words="english"
         )
-    ),("clf",MLPClassifier(
+    ),("mlp",MLPClassifier(
         hidden_layer_sizes=(256,128,64),
         activation='relu',
         solver='adam',
