@@ -1,0 +1,15 @@
+{
+    "timestamp_utc": "2025-12-17T22:58:09.528155+00:00",
+    "model": "TFIDF + MLPClassifier",
+    "training_time": {
+      "seconds": 802.1895730495453,
+      "minutes": 13.369826217492422
+    },
+    "metrics": {
+      "accuracy": 0.87852,
+      "precision": 0.8833346836263469,
+      "recall": 0.87224,
+      "f1_score": 0.877752284345691
+    },
+    "inference_mean_seconds_per_sample": 0.021043633737564085
+  }

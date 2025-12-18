@@ -1,0 +1,15 @@
+{
+    "timestamp_utc": "2025-12-17T18:53:02.983664+00:00",
+    "model": "str",
+    "training_time": {
+      "seconds": 8050.375609636307,
+      "minutes": 134.17292682727177
+    },
+    "metrics": {
+      "accuracy": 0.85108,
+      "precision": 0.8412784819970449,
+      "recall": 0.86544,
+      "f1_score": 0.8531882172009937
+    },
+    "inference_mean_seconds_per_sample": 0.0013050310516357422
+  }
